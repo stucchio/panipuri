@@ -1,9 +1,4 @@
-class CacheBackend(object):
-    def put(self, key, val):
-        raise NotImplemented
-
-    def get(self, key):
-        raise NotImplemented
+from backends import DBMCache
 
 def default_keyfunc(*args, **kwargs):
     return str([args, kwargs])
@@ -22,3 +17,10 @@ class PanipuriFunc(object):
             val = self._func(*args, **kwargs)
             self._cache.put(key, val)
             return val
+
+def simple_cache(filename):
+    cache = DBMCache(filename)
+    def _wrapper(func):
+        ppf = PanipuriFunc(func, cache)
+        return ppf
+    return _wrapper

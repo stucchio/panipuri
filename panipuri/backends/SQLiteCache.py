@@ -1,8 +1,8 @@
-import panipuri
+from CacheBackend import CacheBackend
 import sqlite3
 import pickle
 
-class SQLiteCache(panipuri.CacheBackend):
+class SQLiteCache(CacheBackend):
     def __init__(self, filename, tablename):
         self._db = sqlite3.connect(filename)
         self._tablename = tablename

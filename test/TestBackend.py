@@ -16,7 +16,6 @@ class DummyCache(object):
         return self.dict[key]
 
 class AbstractTestCacheBackend(unittest.TestCase):
-
     def setUp(self):
         """
         Override this to create the self.cache variable.
@@ -26,6 +25,12 @@ class AbstractTestCacheBackend(unittest.TestCase):
     def test_put_get(self):
         self.cache.put("foo", "bar")
         self.assertEqual(self.cache.get("foo"), "bar")
+
+    def test_multi_put_get(self):
+        self.cache.put("foo", "bar")
+        self.cache.put("buz", "baz")
+        self.assertEqual(self.cache.get("foo"), "bar")
+        self.assertEqual(self.cache.get("buz"), "baz")
 
     def test_key_error(self):
         def _should_throw(cache):
