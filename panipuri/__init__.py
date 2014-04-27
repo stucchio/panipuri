@@ -18,9 +18,10 @@ class PanipuriFunc(object):
             self._cache.put(key, val)
             return val
 
-def simple_cache(filename):
-    cache = DBMCache(filename)
+def simple_cache(cache, keyfunc=default_keyfunc):
+    if isinstance(cache, str) or isinstance(cache, unicode):
+        cache = DBMCache(filename)
     def _wrapper(func):
-        ppf = PanipuriFunc(func, cache)
+        ppf = PanipuriFunc(func, cache, keyfunc=default_keyfunc)
         return ppf
     return _wrapper

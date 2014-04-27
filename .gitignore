@@ -2,3 +2,4 @@
 *.pyc
 testproject.db
 build
+Panipuri.egg-info/

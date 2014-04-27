@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
+from setuptools import find_packages
+
 
 setup(name='Panipuri',
       version='0.1',
@@ -8,5 +10,6 @@ setup(name='Panipuri',
       author='Chris Stucchio',
       author_email='stucchio@gmail.com',
       url='https://github.com/stucchio/panipuri',
-      packages = ['panipuri'],
+      packages = find_packages(),
+      test_suite = "tests",
      )
