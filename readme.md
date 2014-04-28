@@ -27,6 +27,10 @@ Standard installation:
 
     $ python setup.py install
 
+Or:
+
+    $ pip install panipuri
+
 ## Usage
 
 There are multiple cache backends to use. The default is a [DBM](https://docs.python.org/2/library/dbm.html) cache. There is also a SQLite cache, which can be used as follows:
