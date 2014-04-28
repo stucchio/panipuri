@@ -11,6 +11,12 @@ class FilesystemDataframeCache(CacheBackend):
 
     def __init__(self, filename):
         self._datadir = filename
+        try:
+            os.makedirs(self._datadir)
+        except OSError as exc: # Python >2.5
+            if exc.errno == errno.EEXIST and os.path.isdir(self._datadir):
+                pass
+            else: raise
 
     def _path(self, key):
         return os.path.join(self._datadir, key)

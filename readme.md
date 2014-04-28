@@ -36,3 +36,11 @@ There are multiple cache backends to use. The default is a [DBM](https://docs.py
     @simple_cache(SQLiteCache("/tmp/mydb.sqlite", "facebook_table"))
     def pull_from_facebook(url):
         return requests.get("https://api.facebook.com/method/fql.query?query=select%20total_count,like_count,comment_count,share_count,click_count,normalized_url%20from%20link_stat%20where%20url=%27"+ url + "%27&format=json")
+
+There is a special cache designed for [pandas dataframes](http://pandas.pydata.org/pandas-docs/version/0.13.1/generated/pandas.DataFrame.html):
+
+    from panipuri.backends import FilesystemDataframeCache
+
+    @simple_cache(FilesystemDataframeCache("/tmp/test/cache"))
+    def f(n):
+        return DataFrame({ "count" : range(n) })
