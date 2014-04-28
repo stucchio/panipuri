@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 
 setup(name='Panipuri',
-      version='0.01',
+      version='0.01.1',
       description='Locally cache scraped data.',
       author='Chris Stucchio',
       author_email='stucchio@gmail.com',

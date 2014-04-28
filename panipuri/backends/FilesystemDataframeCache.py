@@ -1,5 +1,6 @@
 from CacheBackend import CacheBackend
 import os
+import errno
 
 class FilesystemDataframeCache(CacheBackend):
     """
